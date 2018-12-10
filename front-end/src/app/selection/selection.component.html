@@ -1,0 +1,48 @@
+
+<div class="container" *ngIf="show == 0">
+
+    <h3>Configuration</h3>
+<div class="card-group">
+    <div class="card">
+      <div class="card-header">Columns</div>
+      <div class="card-body">
+          <div class="scrollbar scrollbar-primary">
+              <div class="force-overflow"></div>
+            
+          <div class="checkbox" *ngFor="let x of columns">
+              <label><input type="checkbox" value="{{x}}" (change)="onChange(x)">{{x}}</label>
+           </div>
+          </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <p class="card-text"> {{query}}</p>
+      </div>
+      <div class="card-footer">
+          <button routerLink="/previewData" (click)="save()">save</button> <button>close</button>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">Operations</div>
+      <div class="card-body">
+        
+        <p-button label="AND" (click)="querySelect('AND')" ></p-button> <p-button label="OR" (click)="querySelect('OR')"></p-button> 
+        <p-button label="NOT" (click)="querySelect('NOT')"></p-button> <br>
+        <p-button label="LIKE" (click)="querySelect('LIKE')"></p-button> <p-button label="WHERE" (click)="querySelect('WHERE')"></p-button> <br>
+        <p-button label="=" (click)="querySelect('=')"></p-button><p-button label=">" (click)="querySelect('>')"></p-button>
+        <p-button label="<" (click)="querySelect('<')"></p-button><p-button label="<>" (click)="querySelect('<>')"></p-button><br>
+        <p-button label=">=" (click)="querySelect('>=')"></p-button><p-button label="<=" (click)="querySelect('<=')"></p-button><br>
+        <p-button label="AVG" (click)="querySelect('AVG')"></p-button><p-button label="MIN" (click)="querySelect('MIN')"></p-button>
+        <p-button label="MAX" (click)="querySelect('MAX')"></p-button><br>
+        <p-button label="(" (click)="querySelect('(')"></p-button><p-button label="+" (click)="querySelect('+')"></p-button>
+        <p-button label="-" (click)="querySelect('-')"></p-button><p-button label="*" (click)="querySelect('*')"></p-button>
+        <p-button label="/" (click)="querySelect('/')"></p-button><p-button label=")" (click)="querySelect(')')"></p-button><br>
+        <br><br><input type="text"  [(ngModel)] = "input"/><p-button label="INPUT" (click)="querySelect(input)"></p-button>
+      </div>
+    </div>
+  </div>
+</div>
+<app-preview-data *ngIf="show==1" [selectedCols]="selectedCols" [finalQuery] = "finalQuery" [nameFile] = "nameFile">
+
+  </app-preview-data>

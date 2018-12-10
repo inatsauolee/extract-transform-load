@@ -1,0 +1,27 @@
+<p>
+</p>
+<div class="container" *ngIf="show==0">
+    <div class="card card-primary">
+      <div class="card-header">DataPreview
+        <button routerLink="/select" (click)="show=1">Back</button>
+      </div>
+        <div class="card-body">
+<table class="table table-striped">
+    <thead>
+      <tr >
+        <th *ngFor = "let p of selectedCols">{{p}}</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor = "let m of previewData">
+          <td>{{m}}</td>
+        </tr>
+      </tbody>
+</table>
+</div>
+</div>
+</div>
+<app-drag-and-drop *ngIf="show==1">
+
+  </app-drag-and-drop>
+
